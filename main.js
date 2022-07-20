@@ -7,6 +7,7 @@ const cuotas12 = 1.2222;
 const cuotas18 = 1.4053;
 const cuotas24 = 1.5585;
 let cCuotas = 0;
+let termina;
 
 do {
 
