@@ -95,7 +95,7 @@ do {
     else{
         console.log("El total con intereses sería %i en %i cuotas de %i", total, cCuotas, pFinal);
     }
-    termina = confirm("¿Querés agregar otro producto?");    
+    termina = confirm("¿Querés cotizar otro valor?");    
 } 
     while (termina);
 
