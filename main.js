@@ -37,7 +37,7 @@ function calcular() {
     }
     else if(pIngresado == 12){
         total = precio * cuotas12;
-        pFinal = total / 6;
+        pFinal = total / 12;
     }
     else if(pIngresado == 18){
         total = precio * cuotas18;
