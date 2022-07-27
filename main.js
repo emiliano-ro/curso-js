@@ -1,102 +1,53 @@
 let total = 0;
 let pFinal = 0;
+let termina;
+let precio;
+let pIngresado;
 const iva = 1.21;
 const cuotas3 = 1.0539;
 const cuotas6 = 1.1082;
 const cuotas12 = 1.2222;
 const cuotas18 = 1.4053;
 const cuotas24 = 1.5585;
-let cCuotas = 0;
-let termina;
+
 
 do {
 
-    let precio = parseInt(prompt("Ingresa el precio de contado/efectivo del cual querés calcular los intereses"));
+    precio = parseInt(prompt("Ingresa el precio de contado/efectivo del cual querés calcular los intereses"));
 
-    let tieneIva = prompt("El precio ingresado anteriormente incluye iva? SI / NO");
+    pIngresado = parseInt(prompt("Ingresa el plan de pago a continuación según se muestra en la lista\n3 cuotas\n6 cuotas\n12 cuotas\n18 cuotas\n24 cuotas"));
 
-    let pIngresado = parseInt(prompt("Ingresa el plan de pago a continuación según se muestra en la lista\n3 cuotas\n6 cuotas\n12 cuotas\n18 cuotas\n24 cuotas"));
+    calcular();
 
-    if (tieneIva == "si") {
+    console.log("El total con intereses sería %i en %i cuotas de %i", total, pIngresado, pFinal);
 
-        switch (pIngresado) {
-            case 3:
-                cCuotas = 3;
-                total = precio * cuotas3;
-                pFinal = total / 3;
-                break;
-            case 6:
-                cCuotas = 6;
-                total = precio * cuotas6;
-                pFinal = total / 6;
-                break;
-            case 12:
-                cCuotas = 12;
-                total = precio * cuotas12;
-                pFinal = total / 12;
-                break;
-            case 18:
-                cCuotas = 18;
-                total = precio * cuotas18;
-                pFinal = total / 18;
-                break;
-            case 24:
-                cCuotas = 24;
-                total = precio * cuotas24;
-                pFinal = total / 24;
-                break;
-            default:
-                console.log("Ese plan no existe");
-                break;
-        }
+    termina = confirm("¿Querés cotizar otro valor?");
+
+}while (termina);
+
+function calcular() {
+
+    if(pIngresado == 3){
+        total = precio * cuotas3;
+        pFinal = total / 3;
     }
-
-    else if (tieneIva == "no") {
-        switch (pIngresado) {
-
-            case 3:
-                cCuotas = 3;
-                total = precio * cuotas3 * iva;
-                pFinal = total / 3;
-                break;
-
-            case 6:
-                cCuotas = 6;
-                total = precio * cuotas6 * iva;
-                pFinal = total / 6;
-                break;
-
-            case 12:
-                cCuotas = 12;
-                total = precio * cuotas12 * iva;
-                pFinal = total / 12;
-                break;
-
-            case 18:
-                cCuotas = 18;
-                total = precio * cuotas18 * iva;
-                pFinal = total / 18;
-                break;
-
-            case 24:
-                cCuotas = 24;
-                total = precio * cuotas24 * iva;
-                pFinal = total / 24;
-                break;
-
-            default:
-                console.log("Ese plan no existe");
-                break;
-        }
+    else if(pIngresado == 6){
+        total = precio * cuotas6;
+        pFinal = total / 6;
     }
-    if(total == 0 || cCuotas == 0 || pFinal == 0){
-        continue;
+    else if(pIngresado == 12){
+        total = precio * cuotas12;
+        pFinal = total / 6;
+    }
+    else if(pIngresado == 18){
+        total = precio * cuotas18;
+        pFinal = total / 18;
+    }
+    else if(pIngresado == 24){
+        total = precio * cuotas24;
+        pFinal = total / 24;
     }
     else{
-        console.log("El total con intereses sería %i en %i cuotas de %i", total, cCuotas, pFinal);
+        console.log("El numero de cuotas no es correcto")
     }
-    termina = confirm("¿Querés cotizar otro valor?");    
-} 
-    while (termina);
-
-    
+}
