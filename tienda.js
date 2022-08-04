@@ -38,7 +38,28 @@ const producto = [
         precio: 62000,
         stock: 6,
         img: "../images/cuerpos.jpg"
-    }
+    },
+    {
+        nombre: "Escape completo + downpipe acero inoxidable Toyota Yaris GR",
+        id: 6,
+        precio: 120000,
+        stock: 1,
+        img: "../images/downpipegr.jpg"
+    },
+    {
+        nombre: "Kit Agua Metanol AEM V3 1.15 Gall Bora Vento Golf Scirocco",
+        id: 7,
+        precio: 82000,
+        stock: 3,
+        img: "../images/metanol.jpg"
+    },
+    {
+        nombre: "Bielas forjadas VW Bora Vento Gol 144x22 800hp SAENZ",
+        id: 8,
+        precio: 250000,
+        stock: 5,
+        img: "../images/bielasvento.jpg"
+    },
 ];
 
 let titProd = document.getElementById("titProd");
@@ -49,7 +70,7 @@ titProd.innerHTML = ` <h1>Productos destacados</h1>
 let sectionProd = document.getElementById("secProductos");
 sectionProd.className = "row tienda-section";
 
-let main = document.getElementById("main");
+let main = document.getElementById("main-tienda");
 main.className = "dfondo";
 
 for(const prod of producto){
@@ -61,12 +82,12 @@ for(const prod of producto){
         sDesc = "No disponible";
         colorStock = "stockSin";
     }
-    else if(prod.stock >= 3){
+    else if(prod.stock > 2){
         sDesc = "Disponible";
         colorStock = "stockHay";
     }
-    else if(prod.stock > 0 && prod.stock < 3){
-        sDesc = "Crítico";
+    else if(prod.stock > 0 && prod.stock <= 2){
+        sDesc = "Consultar";
         colorStock = "stockCrit";
     }
 
@@ -84,7 +105,7 @@ for(const prod of producto){
     divDesc.innerHTML = `
                     <h2 class="producto__titulo">${prod.nombre}</h2>
                     <h3 class="producto__precio">$${prod.precio}</h3>
-                    <h4 class="producto__precio">Stock:  <span class="${colorStock}">${sDesc}</span></h4>
+                    <h4 class="producto__precio">Stock: <span class="${colorStock}"> ${sDesc}</span></h4>
                     <button class="producto__cbtn" id="agregar${prod.id}" type="button"> Agregar al carrito </button>
     `;
     sectionProd.append(divCard);
