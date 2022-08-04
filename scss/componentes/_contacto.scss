@@ -1,0 +1,64 @@
+/* contacto.html */
+
+.lfTexto label {
+    display: block;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fcTamaño {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.fcTamInp input,
+textarea {
+    width: 380px;
+    height: 1rem;
+    background-color: rgba(255, 255, 255, 0.575);
+    border: 1px solid #f6f6f6;
+    padding: 1rem;
+    margin-top: 2px;
+    font-size: 1rem;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.msjarea{
+    padding-top: 0.5rem;
+    height: 7rem;
+}
+
+.fcTexto {
+    height: 150px;
+}
+
+#submit {
+    width: 85px;
+    height: 35px;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.cCaja {
+    height: fit-content;
+    width: max-content;
+    background-color: rgba(0, 0, 0, 0.575);
+    border: 1px solid white;
+    padding: 1rem;
+    margin: 2rem;
+    @include prod-bordes-todos ($borde-sup-izq, $borde-sup-der, $borde-inf-izq, $borde-inf-der);
+}
+
+.cTexto {
+    font-family: 'Roboto', sans-serif;
+    margin: 1rem 0 1rem 0;
+    font-size: 2rem;
+    color: white;
+    word-spacing: 1rem;
+    text-align: left;
+}

@@ -1,5 +1,3 @@
-// Productos
-
 let stock;
 let id;
 let nombre = "";
@@ -7,217 +5,67 @@ let precio;
 
 const producto = [
     {
-        nombre: "turbo",
+        nombre: "Turbo K03 Bora, Golf GTI, Audi A3 1.8T 180 HP",
         id: 1,
-        precio: 60000,
-        stock: 1
+        precio: 65000,
+        stock: 1,
+        img: "../images/bturbo.jpg"
     },
     {
-        nombre: "intercooler",
+        nombre: "Intercooler upgrade Vw Golf Mk7 Audi A3 S3 8v 2.0t 1.8t Ftx",
         id: 2,
         precio: 55000,
-        stock: 1
+        stock: 1,
+        img: "../images/intercoolermk5.jpg"
     },
     {
-        nombre: "admision",
+        nombre: "Multiple de admision ORP VW Audi S3 GTI MK7 2.0 TSI MQB Gen3",
         id: 3,
         precio: 87000,
-        stock: 2
+        stock: 2,
+        img: "../images/admtsi.jpg"
     },
     {
-        nombre: "multiple escape",
+        nombre: "Multiple escape T3 Bipulsativo 2.0 tfsi tsi VW Audi - SPA",
         id: 4,
         precio: 42000,
-        stock: 0
+        stock: 0,
+        img: "../images/mavento.jpg"
     },
     {
-        nombre: "wideband",
+        nombre: "Cuerpos De Inyección 40mm Dcoe Fajs",
         id: 5,
         precio: 62000,
-        stock: 6
+        stock: 6,
+        img: "../images/cuerpos.jpg"
     }
 ];
 
-// variables generales carrito
+let sectionProd = document.getElementById("secProductos");
+sectionProd.className = "row tienda-section";
 
-let prodIngresado = "";
-let agregarOtro;
-let cIngresada = 0;
-let cProductos;
-let pSuma = 0;
-let prodAgregados = "";
-let coma = ", ";
+let main = document.getElementById("main");
+main.className = "dfondo";
 
+for(const prod of producto){
 
-function aProdCarrito() {
+    let divCard = document.createElement("div");
+    divCard.className = "d-flex col-6 col-sm-6 col-xs-5 col-md-4 col-lg-3 col-xl-3 justify-content-center";
 
-    do {
-        prodIngresado = prompt("Ingresa el nombre del producto según se muestra a continuación\nTurbo\nIntercooler\nAdmision\nMultiple escape\nWideband");
-        cIngresada = parseInt(prompt("Ingresa la cantidad que deseas comprar"));
-        switch (prodIngresado) {
-            case producto[0].nombre:
-                if (producto[0].stock < cIngresada) {
-                    alert("No disponemos de esa cantidad");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else if (producto[0].stock == 0) {
-                    alert("No hay stock de este producto");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else {
-                    pSuma += producto[0].precio * cIngresada;
-                    producto[0].stock -= cIngresada;
-                    prodAgregados = prodAgregados + prodIngresado + coma;
-                }
-                break;
+    let divProd = document.createElement("div")
+    divProd.className = "anim producto aTiempo";
+    divProd.innerHTML = ` <img src=${prod.img} class="producto__imagen">
+    `;
 
-            case producto[1].nombre:
-                if (producto[1].stock < cIngresada) {
-                    alert("No disponemos de esa cantidad");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else if (producto[1].stock == 0) {
-                    alert("No hay stock de este producto");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else {
-                    pSuma += producto[0].precio * cIngresada;
-                    producto[1].stock -= cIngresada;
-                    prodAgregados = prodAgregados + prodIngresado + coma;
-                }
-                break;
+    let divDesc = document.createElement("div");
 
-            case producto[2].nombre:
-                if (producto[2].stock < cIngresada) {
-                    alert("No disponemos de esa cantidad");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else if (producto[2].stock == 0) {
-                    alert("No hay stock de este producto");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else {
-                    pSuma += producto[0].precio * cIngresada;
-                    producto[2].stock -= cIngresada;
-                    prodAgregados = prodAgregados + prodIngresado + coma;
-                }
-                break;
-
-            case producto[3].nombre:
-                if (producto[3].stock < cIngresada) {
-                    alert("No disponemos de esa cantidad");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else if (producto[3].stock == 0) {
-                    alert("No hay stock de este producto");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else {
-                    pSuma += producto[0].precio * cIngresada;
-                    producto[3].stock -= cIngresada;
-                    prodAgregados = prodAgregados + prodIngresado + coma;
-                }
-                break;
-
-            case producto[4].nombre:
-                if (producto[4].stock < cIngresada) {
-                    alert("No disponemos de esa cantidad");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else if (producto[4].stock == 0) {
-                    alert("No hay stock de este producto");
-                    cantidad = 0;
-                    pSuma = 0;
-                }
-                else {
-                    pSuma += producto[0].precio * cIngresada;
-                    producto[4].stock -= cIngresada;
-                    prodAgregados = prodAgregados + prodIngresado + coma;
-                }
-                break;
-
-            default:
-                alert("Ese producto no existe");
-                break;
-        }
-        agregarOtro = confirm("¿Querés agregar otro producto?");
-        console.log(prodAgregados);
-    } while (agregarOtro)
-}
-
-// sistema de cuotas
-
-let quiereCuotas;
-const cuotas3 = 1.0539;
-const cuotas6 = 1.1082;
-const cuotas12 = 1.2222;
-const cuotas18 = 1.4053;
-const cuotas24 = 1.5585;
-let pFinal = 0;
-let total = 0;
-
-function calcCuotas(){
-
-    pIngresado = parseInt(prompt("Ingresa el plan de pago a continuación según se muestra en la lista (Solo numeros de cuotas)\n3 cuotas\n6 cuotas\n12 cuotas\n18 cuotas\n24 cuotas"));
-
-    switch (pIngresado) {
-        case 3:
-            cCuotas = 3;
-            total = pSuma * cuotas3;
-            pFinal = total / 3;
-            break;
-        case 6:
-            cCuotas = 6;
-            total = pSuma * cuotas6;
-            pFinal = total / 6;
-            break;
-        case 12:
-            cCuotas = 12;
-            total = pSuma * cuotas12;
-            pFinal = total / 12;
-            break;
-        case 18:
-            cCuotas = 18;
-            total = pSuma * cuotas18;
-            pFinal = total / 18;
-            break;
-        case 24:
-            cCuotas = 24;
-            total = pSuma * cuotas24;
-            pFinal = total / 24;
-            break;
-        default:
-            console.log("Ese plan no existe");
-            break;
-    }
-    console.log(total);
-}
-
-
-function comprarProd() {
-
-    aProdCarrito();
-
-    quiereCuotas = confirm("Querés pagar en cuotas?");
-
-    if (quiereCuotas == true) {
-        calcCuotas();
-        console.log("Agregaste los siguientes productos: %s con un total de %i$ en %i cuotas de %i$.", prodAgregados, total, cCuotas, pFinal);
-    }
-    else if(quiereCuotas == false){
-        console.log("Agregaste los siguientes productos: %s con un total de %i$", prodAgregados, pSuma);
-    }
-}
-
-comprarProd();
-
-
+    divDesc.className = "producto__desc";
+    divDesc.innerHTML = `
+                    <h2 class="producto__titulo">${prod.nombre}</h2>
+                    <h3 class="producto__precio">$${prod.precio}</h3>
+                    <button class="producto__cbtn" id="agregar${prod.id}" type="button"> Agregar al carrito </button>
+    `;
+    sectionProd.append(divCard);
+    divCard.append(divProd);
+    divProd.append(divDesc);
+};
