@@ -1,4 +1,22 @@
 let carrito = [];
+let totalCarrito = [];
+let tSumaCarrito;
+
+let filtros = document.getElementById("barrafil");
+filtros.innerHTML = `<nav id="nav" class="tNav nuLi efecto aTiempo">
+                    <ul class="aCajas liFondo eTexto dMenu sTexto dLi tsLi">
+                    <li><a href="">Accesorios</a></li>
+
+                    <li><a href="">Combos</a>
+                    </li>
+
+                    <li><a href="">Reprogramación</a>
+                    </li>
+
+                    <li><a href="">Turbos</a>
+                    </li>
+`;
+
 
 let titProd = document.getElementById("titProd");
 titProd.className = "bTitulo eTitulo";
@@ -55,41 +73,36 @@ function pintarProductos() {
         divCard.append(divProd);
         divProd.append(divDesc);
 
-        let bodyT = document.getElementById("bodyTienda");
-        let divBtn = document.createElement("div");
-        divBtn.className = "divCarritoNo";
-        divBtn.innerHTML = `<p id="pBtn">Producto agregado al carrito!</p>
-        `;
-
-        let carBtn = document.getElementById(prod.id);
-
-        carBtn.onclick = () => {
-            carritoDiv();
-        }
-
-        bodyT.append(divBtn);
-
-        function carritoDiv() {
-            divBtn.className = "desdivprodAgregado";
-            console.log("Agregaste un prod");
-            setTimeout(carritoDivBorrar, 3000);
-        }
-
-        function carritoDivBorrar() {
-            divBtn.className = "divCarritoNo";
-        }
-
     };
 
     producto.forEach(prod => {
         document.getElementById(`${prod.id}`).addEventListener("click", function(){
             agregarAlcarrito(prod);
+            totalCarrito.push(prod.precio);
+            console.log(totalCarrito);
+            tSumaCarrito = totalSumado(...totalCarrito);
+            console.log(tSumaCarrito);
         });
-    })
+    });
 }
+
+const totalSumado = (...numeros) => {
+    return numeros.reduce((acc, numero) => acc + numero, 0);
+};
 
 function agregarAlcarrito(productos) {
     carrito.push(productos);
     console.log(carrito);
     localStorage.setItem("carrito", JSON.stringify(carrito));
+    Toastify({
+        text: "Producto agregado al carrito!",
+        duration: 2500,
+        newWindow: true,
+        close: false,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        className: "toastFondo",
+    }).showToast();
 }
+

@@ -2,6 +2,7 @@ let stock;
 let id;
 let nombre = "";
 let precio;
+let categoria = "";
 
 const producto = [
     {
@@ -9,6 +10,7 @@ const producto = [
         id: 1,
         precio: 65000,
         stock: 5,
+        categoria: "turbos",
         img: "../images/bturbo.jpg"
     },
     {
@@ -16,6 +18,7 @@ const producto = [
         id: 2,
         precio: 65000,
         stock: 1,
+        categoria: "intercooler",
         img: "../images/intercoolermk5.jpg"
     },
     {
@@ -23,6 +26,7 @@ const producto = [
         id: 3,
         precio: 87000,
         stock: 3,
+        categoria: "multiplesadm",
         img: "../images/admtsi.jpg"
     },
     {
@@ -30,6 +34,7 @@ const producto = [
         id: 4,
         precio: 42000,
         stock: 0,
+        categoria: "multipleesc",
         img: "../images/mavento.jpg"
     },
     {
@@ -37,6 +42,7 @@ const producto = [
         id: 5,
         precio: 62000,
         stock: 6,
+        categoria: "cuerpos",
         img: "../images/cuerpos.jpg"
     },
     {
@@ -44,6 +50,7 @@ const producto = [
         id: 6,
         precio: 120000,
         stock: 1,
+        categoria: "escapes",
         img: "../images/downpipegr.jpg"
     },
     {
@@ -51,6 +58,7 @@ const producto = [
         id: 7,
         precio: 82000,
         stock: 3,
+        categoria: "metanol",
         img: "../images/metanol.jpg"
     },
     {
@@ -58,6 +66,7 @@ const producto = [
         id: 8,
         precio: 250000,
         stock: 5,
+        categoria: "bielas",
         img: "../images/bielasvento.jpg"
     },
 ];
