@@ -21,17 +21,20 @@
 
 .liFondo {
     background: rgba(0, 0, 0, 0.336);
+    border-left: 2px solid white;
+    border-right: 2px solid white;
 }
 
-.eTexto a {
+.eTexto button{
     display: flex;
     color: white;
-    font-weight: 400;
     padding: 10px;
-    font-family: "Georgia, 'Times New Roman', Times, serif";
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
+    background: rgba(0, 0, 0, 0.336);
+    border: none;
 }
 
 .nuLi ul li {
