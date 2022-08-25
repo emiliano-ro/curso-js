@@ -35,7 +35,7 @@ sectionProd.className = "row tienda-section";
 let main = document.getElementById("main-tienda");
 main.className = "dfondo";
 
-//pintarProductos();
+pintarProductos();
 
 const turbo = producto.filter((el) => el.categoria.includes("turbos"));
 const biela = producto.filter((el) => el.categoria.includes("bielas"));
