@@ -1,6 +1,11 @@
 let carrito = [];
 let totalCarrito = [];
 let tSumaCarrito;
+let productosJSON = [];
+
+let turbo = [];
+let biela = [];
+let destacados = [];
 
 let cFiltros = ["destacados", "combos", "repro", "turbos", "bielas"];
 let filtros = document.getElementById("barrafil");
@@ -35,15 +40,9 @@ sectionProd.className = "row tienda-section";
 let main = document.getElementById("main-tienda");
 main.className = "dfondo";
 
-const turbo = producto.filter((el) => el.categoria.includes("turbos"));
-const biela = producto.filter((el) => el.categoria.includes("bielas"));
-const destacados = producto.filter((el) => el.destacado.includes("si"));
-
 const totalSumado = (...numeros) => {
     return numeros.reduce((acc, numero) => acc + numero, 0);
 };
-
-pintar(destacados);
 
 function agregarAlcarrito(productos) {
     carrito.push(productos);
@@ -61,6 +60,14 @@ function agregarAlcarrito(productos) {
     }).showToast();
 }
 
+function cargarFil(){
+    turbo = productosJSON.filter((el) => el.categoria.includes("turbos"));
+    biela = productosJSON.filter((el) => el.categoria.includes("bielas"));
+    destacados = productosJSON.filter((el) => el.destacado.includes("si"));
+}
+
+console.log(productosJSON);
+
 cFiltros.forEach(filtros => {
     document.getElementById(`${filtros}`).addEventListener("click", function () {
 
@@ -73,7 +80,6 @@ cFiltros.forEach(filtros => {
         else if (filtros == "destacados") {
             pintar(destacados);
         }
-
     });
 });
 
@@ -131,3 +137,16 @@ function pintar(el) {
         });
     });
 }
+
+obtenerJSON();
+
+async function obtenerJSON() {
+    const URLJSON = "../productos2.json"
+    const resp = await fetch(URLJSON)
+    const data = await resp.json()
+    productosJSON = data;
+    cargarFil();
+    pintar(destacados);
+}
+
+console.log(productosJSON);
