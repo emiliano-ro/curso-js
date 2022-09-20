@@ -66,8 +66,6 @@ function cargarFil(){
     destacados = productosJSON.filter((el) => el.destacado.includes("si"));
 }
 
-console.log(productosJSON);
-
 cFiltros.forEach(filtros => {
     document.getElementById(`${filtros}`).addEventListener("click", function () {
 
@@ -149,4 +147,19 @@ async function obtenerJSON() {
     pintar(destacados);
 }
 
-console.log(productosJSON);
+// MODAL
+
+let modalSection = document.getElementById("modal");
+let modalContainer = document.createElement("div");
+
+modalSection.append(modalContainer);
+
+function pintarModal(){
+    for (const prod of carrito) {
+        modalContainer.innerHTML= `
+                            <h2 class="producto__titulo">${prod.nombre}</h2>
+                            <h3 class="producto__precio">$${prod.precio}</h3>
+                            `;
+    };
+    console.log(carrito)
+}
