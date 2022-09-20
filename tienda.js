@@ -24,6 +24,9 @@ filtros.innerHTML = `<nav id="nav" class="tNav nuLi efecto aTiempo">
 
                     <li><button id="${cFiltros[4]}">Bielas</button>
                     </li>
+                    </ul>
+                    <div class="car"><i id="btnCarrito" class="fa-solid fa-cart-shopping"></i></div>
+
 `;
 
 
@@ -150,16 +153,42 @@ async function obtenerJSON() {
 // MODAL
 
 let modalSection = document.getElementById("modal");
-let modalContainer = document.createElement("div");
-
+let modalContainer = document.getElementById("modal__container");
+let botonCarrito = document.getElementById("btnCarrito");
+let cerrarCarrito = document.getElementById("cerrarCarr");
+let pintarTotal = document.getElementById("precioTotal");
 modalSection.append(modalContainer);
 
 function pintarModal(){
     for (const prod of carrito) {
-        modalContainer.innerHTML= `
-                            <h2 class="producto__titulo">${prod.nombre}</h2>
-                            <h3 class="producto__precio">$${prod.precio}</h3>
+        document.getElementById("tablabody").innerHTML+=`
+                            <tr id='fila${prod.id}'>
+                            <td> ${prod.id} </td>
+                            <td> ${prod.nombre}</td>
+                            <td> ${prod.precio}</td>
+                            <td> <button class='btn btn-light' onclick='eliminar(${prod.id})'>🗑️</button>
                             `;
     };
-    console.log(carrito)
+    tomarTotal();
+}
+
+function tomarTotal(){
+    let total = totalSumado(...totalCarrito);
+    pintarTotal.innerText=`Total: $${total}`
+}
+
+botonCarrito.onclick = () => {
+    pintarModal();
+    modalSection.classList.add("modal__mostrar");
+}
+
+cerrarCarrito.onclick = () => {
+    modalSection.classList.remove("modal__mostrar");
+}
+
+function eliminar(id){
+    let indice = carrito.findIndex(prod => prod.id == id);
+    carrito.splice(indice);
+    let fila=document.getElementById(`fila${id}`);
+    document.getElementById("tablabody").removeChild(fila);
 }
